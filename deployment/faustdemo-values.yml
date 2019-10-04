@@ -1,0 +1,14 @@
+image:
+  repository: faustdemo
+  tag: latest
+  pullPolicy: Always
+
+restartPolicy: Never
+command: ["./run.sh"]
+
+extraEnvValues:
+  FAUST_DATADIR: ".data1"
+  KAFKA_BROKER: "my-confluent-cp-kafka.johnstest.svc.cluster.local"
+  SIMPLE_SETTINGS: "faustdemo.settings"
+
+port: 8088

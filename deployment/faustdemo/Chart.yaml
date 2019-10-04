@@ -1,0 +1,7 @@
+name: faustdemo
+description: Deploy a basic faustdemo pod
+version: 0.1.0
+home: https://github.com/helm/helm
+sources:
+  - https://github.com/helm/helm
+appVersion: 3.3

@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "faustdemo"
+version = "0.1.0"
+description = "Faust cookiecutter project"
+authors = ["John Roach <johnroach1985@gmail.com>"]
+
+[tool.poetry.scripts]
+faustdemo = "faustdemo.app:main"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+faust = {version = "^1.8", extras = ["rocksdb", "uvloop", "fast", "redis", "statsd", "datadog"]}
+simple_settings = "^0.18.0"
+
+[tool.poetry.dev-dependencies]
+faust = {version = "^1.8", extras = ["debug", "rocksdb", "uvloop", "fast", "redis", "statsd", "datadog"]}
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

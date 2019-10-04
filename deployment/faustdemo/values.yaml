@@ -1,0 +1,13 @@
+image:
+  repository: faustdemo
+  tag: latest
+  pullPolicy: Always
+
+restartPolicy: Never
+command: ["./run.sh"]
+
+extraEnvValues:
+  FAUST_DATADIR: ".data1"
+  SIMPLE_SETTINGS: "faustdemo.settings"
+
+port: 8088
