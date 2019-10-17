@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: {{ template "faustdemo.fullname" . }}
-  namespace: johnstest
+  namespace: testspace
   labels:
     # The "app.kubernetes.io/managed-by" label is used to track which tool deployed a given chart.
     # It is useful for admins who want to see what releases a particular tool
@@ -23,6 +23,11 @@ spec:
     image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
     imagePullPolicy: {{ .Values.image.pullPolicy }}
     command: {{ .Values.command }}
+    # disabled readiness probe as tilt needs service available
+    #readinessProbe:
+    #  httpGet:
+    #    path: "/ready/"
+    #    port: {{ .Values.port }}
     ports:
       - containerPort: {{ .Values.port }}
     resources:

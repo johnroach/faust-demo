@@ -9,11 +9,13 @@ faustdemo = "faustdemo.app:main"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-faust = {version = "^1.8", extras = ["rocksdb", "uvloop", "fast", "redis", "statsd", "datadog"]}
+faust = {version = "^1.8", extras = ["uvloop", "fast", "redis", "statsd", "datadog"]}
 simple_settings = "^0.18.0"
 
 [tool.poetry.dev-dependencies]
-faust = {version = "^1.8", extras = ["debug", "rocksdb", "uvloop", "fast", "redis", "statsd", "datadog"]}
+faust = {version = "^1.8", extras = ["debug", "uvloop", "fast", "redis", "statsd", "datadog"]}
+pylint = "^2.4.2"
+black = "^19.3b0"
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"

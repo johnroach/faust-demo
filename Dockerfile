@@ -16,14 +16,14 @@ RUN git clone https://github.com/facebook/rocksdb.git /tmp/rocksdb \
     && make install-shared INSTALL_PATH=/usr \
     && rm -rf /tmp/rocksdb
 
+ENV STORE_URI=rocksdb://
+
 WORKDIR /faustdemo/
 
 COPY . /faustdemo
 
-RUN pip3 install poetry==1.0.0b1 && poetry install
+RUN if [ -d ".venv" ]; then rm -Rf .venv; fi
 
-RUN apt-get -y remove --purge apt-utils git libgflags-dev libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev libzstd-dev \
-    && apt-get autoremove -y && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+RUN pip3 install poetry==1.0.0b1 && poetry add python-rocksdb && poetry install
 
 ENTRYPOINT ["./run.sh"]

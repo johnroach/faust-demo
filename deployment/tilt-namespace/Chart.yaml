@@ -1,0 +1,7 @@
+name: tilt-namespace
+description: Deploy a basic namespace for user
+version: 0.1.0
+home: https://github.com/helm/helm
+sources:
+  - https://github.com/helm/helm
+appVersion: 3.3

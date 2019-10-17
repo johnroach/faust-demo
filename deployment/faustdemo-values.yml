@@ -8,7 +8,7 @@ command: ["./run.sh"]
 
 extraEnvValues:
   FAUST_DATADIR: ".data1"
-  KAFKA_BROKER: "my-confluent-cp-kafka.johnstest.svc.cluster.local"
+  KAFKA_BROKER: "confluent-cp-kafka.testspace.svc.cluster.local"
   SIMPLE_SETTINGS: "faustdemo.settings"
 
 port: 8088
