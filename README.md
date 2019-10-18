@@ -13,7 +13,9 @@ The demo has 3 pages:
   - [**Agents - Self-organizing Stream Processors**](https://faust.readthedocs.io/en/latest/userguide/agents.html)
 - [`/report/`](http://localhost:8088/report/): Will show the present values in table. Not to be relied on in production environments.
 
-First run might take some time due to RocksDB installation. RocksDB is very useful when dealing with failures when processing streaming data in a tabled fashion.
+![demo run](https://zappy.zapier.com/10A28132-F64C-4319-8D66-99A14114FE7C.gif)
+
+**Note:** First run might take some time due to RocksDB installation. RocksDB is very useful when dealing with failures when processing streaming data in a tabled fashion.
 
 ### Requirements
 
