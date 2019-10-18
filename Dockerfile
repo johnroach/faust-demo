@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN echo 'deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main' >> /etc/apt/sources.list
 RUN apt-get update \
     && apt-get install -y --no-install-recommends apt-utils \
-    && apt-get install -y --no-install-recommends git gcc make g++ libgflags-dev libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev libzstd-dev \
+    && apt-get install -y --no-install-recommends git gcc make g++ libgflags-dev libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev libzstd-dev netcat\
     && apt-get autoremove -y && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -20,10 +20,15 @@ ENV STORE_URI=rocksdb://
 
 WORKDIR /faustdemo/
 
-COPY . /faustdemo
-
-RUN if [ -d ".venv" ]; then rm -Rf .venv; fi
+COPY run.sh /faustdemo/
+COPY wait_for_services.sh /faustdemo/
+COPY poetry.lock /faustdemo/
+COPY poetry.toml /faustdemo/
+COPY pyproject.toml /faustdemo/
+COPY Makefile /faustdemo/
 
 RUN pip3 install poetry==1.0.0b1 && poetry add python-rocksdb && poetry install
+
+COPY faustdemo /faustdemo/faustdemo
 
 ENTRYPOINT ["./run.sh"]

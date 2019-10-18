@@ -26,6 +26,8 @@ k8s_resource('confluent-cp-control-center',port_forwards=9021)
 k8s_yaml(local('helm template --namespace johntest -f ./deployment/faustdemo-values.yml ./deployment/faustdemo'))
 # will need to change this to a remote repo later on
 faustdemo_img_name = 'faustdemo'
+
+# the build below could be written more targeted. might return back to this.
 docker_build(faustdemo_img_name, '.', dockerfile='Dockerfile',
   live_update=[
     sync('faustdemo', '/faustdemo/faustdemo'),
